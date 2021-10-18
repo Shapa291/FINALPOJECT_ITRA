@@ -31,8 +31,19 @@ module.exports = (sequelize, DataTypes) => {
       rate:{
         type: DataTypes.FLOAT,
         allowNull: true
-      }
-
+      },
+      image1:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      image2:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      image3:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     });
   
     Problems.associate = (models) => {
@@ -41,6 +52,10 @@ module.exports = (sequelize, DataTypes) => {
       })
 
       Problems.hasMany(models.Rate, {
+        onDelete: "cascade",
+      })
+
+      Problems.hasMany(models.UsersInfo, {
         onDelete: "cascade",
       })
     }

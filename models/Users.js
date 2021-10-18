@@ -8,10 +8,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      role: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      }
     });
   
     Users.associate = (models) => {
       Users.hasMany(models.Rate, {
+        onDelete: "cascade",
+      })
+
+      Users.hasMany(models.UsersInfo, {
         onDelete: "cascade",
       })
     }
